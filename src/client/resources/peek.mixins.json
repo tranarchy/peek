@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "peek.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "ClientWorldMixin",
+    "HandledScreenMixin",
+    "ConnectScreenMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

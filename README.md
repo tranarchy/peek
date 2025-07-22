@@ -7,11 +7,11 @@
 
 # About
 
-This is a standalone mod of the Peek module from my [utility mod](https://github.com/tranarchy/nicotine)
-
 This mod let's you see inside of shulker boxes and ender chests without opening them
 
-Pressing `LEFT ALT` while your mouse is over a shulker box or an ender chest opens it inside of a container and let's you inspect the items
+Pressing `LEFT ALT` while your mouse is over a shulker box or an ender chest opens it inside of a container and let's you inspect the items individually
+
+NOTE: For the ender chest, you have to open it normally once to see it from your inventory
 
 # Building
 
@@ -25,3 +25,5 @@ cd peek
 # Windows
 .\gradlew.bat build
 ```
+
+You will find the built jar in `build/libs`

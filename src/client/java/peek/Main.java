@@ -8,9 +8,9 @@ import net.minecraft.client.util.InputUtil;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.ContainerComponent;
 import net.minecraft.inventory.SimpleInventory;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.registry.tag.ItemTags;
 import org.joml.Matrix3x2fStack;
 import peek.events.ClientWorldTickEvent;
 import peek.events.DrawMouseOverToolTipEvent;
@@ -19,7 +19,6 @@ import peek.util.PeekScreen;
 import peek.util.RenderGUI;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Main implements ClientModInitializer {
@@ -29,26 +28,6 @@ public class Main implements ClientModInitializer {
 
 	@Override
 	public void onInitializeClient() {
-		final List<Item> shulkerBoxItems = Arrays.asList(
-				Items.SHULKER_BOX,
-				Items.WHITE_SHULKER_BOX,
-				Items.ORANGE_SHULKER_BOX,
-				Items.MAGENTA_SHULKER_BOX,
-				Items.LIGHT_BLUE_SHULKER_BOX,
-				Items.YELLOW_SHULKER_BOX,
-				Items.LIME_SHULKER_BOX,
-				Items.PINK_SHULKER_BOX,
-				Items.GRAY_SHULKER_BOX,
-				Items.LIGHT_GRAY_SHULKER_BOX,
-				Items.CYAN_SHULKER_BOX,
-				Items.PURPLE_SHULKER_BOX,
-				Items.BLUE_SHULKER_BOX,
-				Items.BROWN_SHULKER_BOX,
-				Items.GREEN_SHULKER_BOX,
-				Items.RED_SHULKER_BOX,
-				Items.BLACK_SHULKER_BOX
-		);
-
 		final int SLOT_WIDTH = 18;
 		final int MAX_WIDTH = SLOT_WIDTH * 9;
 
@@ -60,7 +39,7 @@ public class Main implements ClientModInitializer {
 			if (event.focusedSlot != null) {
 				ItemStack focusedStack = event.focusedSlot.getStack();
 
-				if (shulkerBoxItems.contains(focusedStack.getItem()) || (focusedStack.getItem() == Items.ENDER_CHEST && echestWasOpened)) {
+				if (focusedStack.isIn(ItemTags.SHULKER_BOXES) || (focusedStack.getItem() == Items.ENDER_CHEST && echestWasOpened)) {
 
 					List<ItemStack> itemsToPeek;
 
@@ -78,6 +57,8 @@ public class Main implements ClientModInitializer {
 							peekInventory.setStack(i, itemsToPeek.get(i));
 						}
 						mc.setScreen(new PeekScreen(focusedStack.getName(), peekInventory));
+
+						return true;
 					}
 
 					int posX = event.x + (SLOT_WIDTH / 2);

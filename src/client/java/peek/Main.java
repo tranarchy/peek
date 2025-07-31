@@ -57,8 +57,6 @@ public class Main implements ClientModInitializer {
 							peekInventory.setStack(i, itemsToPeek.get(i));
 						}
 						mc.setScreen(new PeekScreen(focusedStack.getName(), peekInventory));
-
-						return true;
 					}
 
 					int posX = event.x + (SLOT_WIDTH / 2);

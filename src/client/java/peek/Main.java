@@ -50,7 +50,7 @@ public class Main implements ClientModInitializer {
 						itemsToPeek = shulkerContainer.stream().toList();
 					}
 
-					if (InputUtil.isKeyPressed(mc.getWindow().getHandle(), InputUtil.GLFW_KEY_LEFT_ALT)) {
+					if (InputUtil.isKeyPressed(mc.getWindow(), InputUtil.GLFW_KEY_LEFT_ALT)) {
 						SimpleInventory peekInventory = new SimpleInventory(9 * 3);
 
 						for (int i = 0; i < itemsToPeek.size(); i++) {

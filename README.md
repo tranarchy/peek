@@ -17,9 +17,14 @@ NOTE: For the ender chest, you have to open it normally once to see it from your
 
 ```
 git clone https://github.com/tranarchy/peek
-cd peek
 
-# GNU/Linux, macOS and *BSD
+# For Fabric
+cd peek/fabric
+
+# For NeoForge
+cd peek/neoforge
+
+# Linux, macOS and *BSD
 ./gradlew build
 
 # Windows

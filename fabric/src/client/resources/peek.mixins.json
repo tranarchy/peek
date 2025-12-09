@@ -3,8 +3,8 @@
   "package": "peek.mixin",
   "compatibilityLevel": "JAVA_21",
   "client": [
-    "ClientWorldMixin",
-    "HandledScreenMixin",
+    "ClientLevelMixin",
+    "AbstractContainerScreenMixin",
     "ConnectScreenMixin"
   ],
   "injectors": {

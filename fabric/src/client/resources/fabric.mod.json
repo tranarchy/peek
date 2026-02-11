@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "id": "peek",
-  "version": "1.0.1",
-  "name": "Shulker/EChest Peek",
-  "description": "Allows you to see the content of shulker boxes and ender chests without opening them",
+  "version": "1.0.2",
+  "name": "Shulker / Ender Chest tooltip",
+  "description": "Allows you to see inside of shulker boxes and ender chests without opening them",
   "authors": [
     "tranarchy"
   ],
   "contact": {
-    "homepage": "https://github.com/tranarchy/peek",
+    "homepage": "https://modrinth.com/mod/shulker-echest-tooltip",
     "sources": "https://github.com/tranarchy/peek"
   },
   "license": "GPL-3.0",
@@ -24,7 +24,7 @@
   ],
   "depends": {
     "fabricloader": ">=0.17.2",
-    "minecraft": "~1.21.9",
+    "minecraft": ">=1.21.11",
     "java": ">=21"
   }
 }

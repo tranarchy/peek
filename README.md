@@ -7,7 +7,7 @@
 
 # About
 
-This mod let's you see inside of shulker boxes and ender chests without opening them
+This mod allows you to see inside of shulker boxes and ender chests without opening them
 
 Pressing `LEFT ALT` while your mouse is over a shulker box or an ender chest opens it inside of a container and let's you inspect the items individually
 
@@ -15,20 +15,18 @@ NOTE: For the ender chest, you have to open it normally once to see it from your
 
 # Building
 
+Fabric
+
 ```
-git clone https://github.com/tranarchy/peek
-
-# For Fabric
-cd peek/fabric
-
-# For NeoForge
-cd peek/neoforge
-
-# Linux, macOS and *BSD
+cd fabric
 ./gradlew build
+```
 
-# Windows
-.\gradlew.bat build
+NeoForge
+
+```
+cd neoforge
+./gradlew build
 ```
 
 You will find the built jar in `build/libs`

@@ -3,7 +3,7 @@ package peek.mixin;
 import com.mojang.blaze3d.platform.InputConstants;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.tags.ItemTags;
@@ -29,8 +29,8 @@ public class AbstractContainerScreenMixin {
     @Shadow
     protected Slot hoveredSlot;
 
-    @Inject(at = @At("HEAD"), method = "renderTooltip", cancellable = true)
-    protected void renderTooltip(GuiGraphics guiGraphics, int x, int y, CallbackInfo info) {
+    @Inject(at = @At("HEAD"), method = "extractTooltip", cancellable = true)
+    protected void extractTooltip(GuiGraphicsExtractor guiGraphics, int x, int y, CallbackInfo info) {
         if (hoveredSlot == null)
             return;
 
@@ -53,7 +53,7 @@ public class AbstractContainerScreenMixin {
                 itemsToPeek = Main.enderChestItems;
             } else {
                 ItemContainerContents shulkerContainer = focusedStack.getComponents().get(DataComponents.CONTAINER);
-                itemsToPeek = shulkerContainer.stream().toList();
+                itemsToPeek = shulkerContainer.allItemsCopyStream().toList();
             }
 
             if (InputConstants.isKeyDown(mc.getWindow(), InputConstants.KEY_LALT)) {
@@ -81,7 +81,7 @@ public class AbstractContainerScreenMixin {
 
             guiGraphics.fill(posX, posY, posX + MAX_WIDTH, posY + textRenderer.lineHeight + 4, BACKGROUND_COLOR);
             RenderGUI.drawBorder(guiGraphics, posX, posY, MAX_WIDTH, textRenderer.lineHeight + 4, BORDER_COLOR);
-            guiGraphics.drawString(textRenderer, focusedStack.getHoverName(), posX + 3, posY + 3, FOREGROUND_COLOR, true);
+            guiGraphics.text(textRenderer, focusedStack.getHoverName(), posX + 3, posY + 3, FOREGROUND_COLOR, true);
 
             posY += textRenderer.lineHeight + 4;
 
@@ -94,8 +94,8 @@ public class AbstractContainerScreenMixin {
                     guiGraphics.fill(posX, posY, posX + SLOT_WIDTH, posY + SLOT_WIDTH, BACKGROUND_COLOR);
                     RenderGUI.drawBorder(guiGraphics, posX, posY, SLOT_WIDTH, SLOT_WIDTH, BORDER_COLOR);
 
-                    guiGraphics.renderItem(shulkerItem, posX + 1, posY + 1);
-                    guiGraphics.renderItemDecorations(textRenderer, shulkerItem, posX + 1, posY + 1, stackCount > 1 ? String.valueOf(stackCount) : "");
+                    guiGraphics.item(shulkerItem, posX + 1, posY + 1);
+                    guiGraphics.itemDecorations(textRenderer, shulkerItem, posX + 1, posY + 1, stackCount > 1 ? String.valueOf(stackCount) : "");
 
                     posX += SLOT_WIDTH;
                     itemIndex++;

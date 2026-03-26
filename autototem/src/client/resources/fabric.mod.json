@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "peek",
+  "version": "1.0.0",
+  "name": "AutoTotem",
+  "description": "Automatically replaces totems in your offhand from your inventory",
+  "authors": [
+    "tranarchy"
+  ],
+  "contact": {
+    "homepage": "https://modrinth.com/mod/auto-totem-replace",
+    "sources": "https://github.com/tranarchy/utility-mods"
+  },
+  "license": "GPL-3.0",
+  "icon": "icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "autototem.Main"
+    ]
+  },
+  "mixins": [
+    "autototem.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.18.4",
+    "minecraft": ">=26.1",
+    "java": ">=25"
+  }
+}
